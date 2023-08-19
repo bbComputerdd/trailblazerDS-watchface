@@ -2,7 +2,7 @@
 
 <center>小米手环7 表盘</center>
 
-# <center>崩坏：星穹铁道 开拓者（星）— 毁灭</center>
+# <center>崩坏：星穹铁道 开拓者—星（毁灭）</center>
 
 ## 序
 
