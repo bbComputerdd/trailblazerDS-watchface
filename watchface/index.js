@@ -12,7 +12,7 @@ try {
         //store data
         const digiBig = [], digiMed = [], digiSmG = [], digiMeB = [], digiAODb = [], digiAODs = [];
         const mthc = [], mthe = [], mthAODc = [], mthAODe = [];
-        const wkc = [], wke = [], wkAODc = [], wkAODe = [];
+        const wkc = [], wktc = [], wke = [], wkAODc = [], wkAODtc = [], wkAODe = [];
         for (let i = 0; i <= 9; i++) {
             digiBig.push("Big" + i.toString() + ".png");
             digiMed.push("Med" + i.toString() + ".png");
@@ -29,31 +29,26 @@ try {
         }
         for (let i of ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]) {
             wkc.push(i + "c.png");
+            wktc.push(i + "tc.png");
             wke.push(i + "e.png");
             wkAODc.push("AOD" + i + "c.png");
+            wkAODtc.push("AOD" + i + "tc.png");
             wkAODe.push("AOD" + i + "e.png");
         }
-        const starskybg = {
+        const bg = {
             x: 0,
             y: 0,
             w: 192,
             h: 490,
-            src: "starskybg.png",
+            src: "bg.png",
             show_level: hmUI.show_level.ONLY_NORMAL
         },
-            astralexpress = {
-                x: 7, y: 0,
-                src: 'astralexpress.png',
-                show_level: hmUI.show_level.ONLY_NORMAL
-            },
             stelle = {
-                x: -36, y: 0,
-                src: 'stelle.png',
-                show_level: hmUI.show_level.ONLY_NORMAL
-            },
-            star = {
-                x: 25, y: 15,
-                src: 'star.png',
+                x: -36,
+                y: 0,
+                w: 192,
+                h: 490,
+                src: "stelle.png",
                 show_level: hmUI.show_level.ONLY_NORMAL
             },
             time = {
@@ -73,7 +68,7 @@ try {
                 show_level: hmUI.show_level.ONLY_NORMAL
             },
             date = {
-                month_startX: 140, month_startY: 244,
+                month_startX: 140, month_startY: 250,
                 month_sc_array: mthc,
                 month_tc_array: mthc,
                 month_en_array: mthe,
@@ -81,7 +76,7 @@ try {
                 month_follow: 0,
                 month_space: 0,
                 month_is_character: true,
-                day_startX: 140, day_startY: 274,
+                day_startX: 140, day_startY: 280,
                 day_sc_array: digiMed,
                 day_tc_array: digiMed,
                 day_en_array: digiMed,
@@ -91,27 +86,10 @@ try {
                 show_level: hmUI.show_level.ONLY_NORMAL
             },
             week = {
-                x: 140, y: 300,
+                x: 140, y: 303,
                 week_sc: wkc,
-                week_tc: wkc,
+                week_tc: wktc,
                 week_en: wke,
-                show_level: hmUI.show_level.ONLY_NORMAL
-            },
-            rectFill = {
-                x: 57, y: 13,
-                w: 85,
-                h: 23,
-                radius: 14,
-                color: 0xffffff,
-                show_level: hmUI.show_level.ONLY_NORMAL
-            },
-            rectStroke = {
-                x: 55, y: 11,
-                w: 87,
-                h: 27,
-                radius: 10,
-                color: 0x000000,
-                line_width: 2,
                 show_level: hmUI.show_level.ONLY_NORMAL
             },
             bat = {
@@ -123,41 +101,6 @@ try {
                 align_h: hmUI.align.CENTER_H,
                 show_level: hmUI.show_level.ONLY_NORMAL,
             },
-            trailblazecalendar = {
-                x: 140, y: 220,
-                src: 'Trailblaze_Calendar.png',
-                show_level: hmUI.show_level.ONLY_NORMAL
-            },
-            trailblazepower = {
-                x: 47, y: 1,
-                src: 'trailblazepower.png',
-                show_level: hmUI.show_level.ONLY_NORMAL
-            },
-            path = {
-                x: 140, y: 403,
-                src: 'path-deconstruction.png',
-                show_level: hmUI.show_level.ONLY_NORMAL
-            },
-            type = {
-                x: 90, y: 395,
-                src: 'type-physical.png',
-                show_level: hmUI.show_level.ONLY_NORMAL
-            },
-            heartpulse = {
-                x: 130, y: 379,
-                src: 'heart-pulse-fill.png',
-                show_level: hmUI.show_level.ONLY_NORMAL
-            },
-            walk = {
-                x: 130, y: 333,
-                src: 'walk-fill.png',
-                show_level: hmUI.show_level.ONLY_NORMAL
-            },
-            step = {
-                x: 147, y: 339,
-                src: 'Step.png',
-                show_level: hmUI.show_level.ONLY_NORMAL
-            },
             heartpulseDigi = {
                 x: 150, y: 379,
                 w: 40,
@@ -168,7 +111,7 @@ try {
                 show_level: hmUI.show_level.ONLY_NORMAL,
             },
             walkDigi = {
-                x: 127, y: 354,
+                x: 127, y: 357,
                 w: 65,
                 h_space: 0,
                 type: hmUI.data_type.STEP,
@@ -231,18 +174,19 @@ try {
                 month_zero: 0,
                 month_space: 10,
                 month_is_character: true,
+                day_startX: 80, day_startY: 347,
                 day_sc_array: digiAODs,
                 day_tc_array: digiAODs,
                 day_en_array: digiAODs,
                 day_zero: 0,
-                day_follow: 1,
+                day_follow: 0,
                 day_is_character: false,
                 show_level: hmUI.show_level.ONLY_NORMAL
             },
             weekDark = {
                 x: 120, y: 347,
                 week_sc: wkAODc,
-                week_tc: wkAODc,
+                week_tc: wkAODtc,
                 week_en: wkAODe,
                 show_level: hmUI.show_level.ONLY_NORMAL
             },
@@ -283,18 +227,19 @@ try {
                 month_zero: 0,
                 month_space: 10,
                 month_is_character: true,
+                day_startX: 80, day_startY: 347,
                 day_sc_array: digiAODs,
                 day_tc_array: digiAODs,
                 day_en_array: digiAODs,
                 day_zero: 0,
-                day_follow: 1,
+                day_follow: 0,
                 day_is_character: false,
                 show_level: hmUI.show_level.ONLY_AOD
             },
             weekAOD = {
                 x: 120, y: 347,
                 week_sc: wkAODc,
-                week_tc: wkAODc,
+                week_tc: wkAODtc,
                 week_en: wkAODe,
                 show_level: hmUI.show_level.ONLY_AOD
             },
@@ -328,24 +273,40 @@ try {
                 tips_margin: 8
             };
 
-        function randomNum(minNum, maxNum) {
-            switch (arguments.length) {
-                case 1:
-                    return parseInt(Math.random() * minNum + 1, 10);
-                    break;
-                case 2:
-                    return parseInt(Math.random() * (maxNum - minNum + 1) + minNum, 10);
-                    break;
-                default:
-                    return 0;
-                    break;
+        function decodeUtf8(array, outLimit = Infinity, startPosition = 0) {
+            let out = "";
+            let length = array.length;
+            let i = startPosition, c, char2, char3;
+            while (i < length && out.length < outLimit) {
+                c = array[i++];
+                switch (c >> 4) {
+                    case 0:
+                    case 1:
+                    case 2:
+                    case 3:
+                    case 4:
+                    case 5:
+                    case 6:
+                    case 7:
+                        out += String.fromCharCode(c);
+                        break;
+                    case 12:
+                    case 13:
+                        char2 = array[i++];
+                        out += String.fromCharCode(
+                            (c & 31) << 6 | char2 & 63
+                        );
+                        break;
+                    case 14:
+                        char2 = array[i++];
+                        char3 = array[i++];
+                        out += String.fromCharCode(
+                            (c & 15) << 12 | (char2 & 63) << 6 | (char3 & 63) << 0
+                        );
+                        break;
+                }
             }
-        }
-        function ArrayBufferToString(buffer) {
-            // return String.fromCharCode.apply(null, new Uint8Array(buffer));
-            let encodedString = String.fromCodePoint.apply(null, new Uint8Array(buffer));
-            let decodedString = decodeURIComponent(escape(encodedString));
-            return decodedString;
+            return [out, i - startPosition];
         }
 
         g.module = DeviceRuntimeCore.WatchFace({
@@ -353,7 +314,7 @@ try {
                 let prf = hmUI.createWidget(hmUI.widget.WATCHFACE_EDIT_GROUP, preferences);
                 let mode = prf.getProperty(hmUI.prop.CURRENT_TYPE);
                 const language = hmSetting.getLanguage();
-                let fileId, filename, errRd;
+                let filename, voiceover = [], res;
                 switch (language) {
                     case 0:
                         filename = "voiceoversc.txt";
@@ -365,31 +326,18 @@ try {
                         filename = "voiceoveren.txt";
                         break;
                 }
-                fileId = hmFS.open(filename, hmFS.O_RDONLY | hmFS.O_CREAT);
-                // let decoder = new TextDecoder("utf8");
-                let res, voiceover = [];
-                const [fs_stat, err] = hmFS.stat(filename);
+                const [fsStat, err] = hmFS.stat_asset(filename);
                 if (err == 0) {
-                    const { size, mtime } = fs_stat;
-                    let arr = new Uint8Array(size);
-                    errRd = hmFS.read(fileId, arr.buffer, 0, size);
-                    // console.log(arr);
-                    if (errRd == 0) {
-                        // res = decoder.decode(arr.buffer);
-                        res = ArrayBufferToString(arr);
-                        for (let i = 0, tmp = ""; i < res.length; i++) {
-                            if (res[i] != "\n") { // voiceover__.txt must use LF line ending!
-                                tmp += res[i];
-                            } else {
-                                voiceover.push(tmp);
-                                tmp = "";
-                            }
-                        }
-                    }
+                    const buffer = new ArrayBuffer(fsStat.size);
+                    const file = hmFS.open_asset(filename, hmFS.O_RDONLY);
+                    hmFS.read(file, buffer, 0, fsStat.size);
+                    hmFS.close(file);
+                    res = decodeUtf8(new Uint8Array(buffer))[0];
+                    voiceover = res.split(/\r\n |\n/);
                 }
                 function VoDisplay() {
                     const t = hmSensor.createSensor(hmSensor.id.TIME);
-                    if (err == 0 && errRd == 0) {
+                    if (err == 0) {
                         if (t.month == 3 && t.day == 7) {
                             switch (language) {
                                 case 0:
@@ -399,40 +347,29 @@ try {
                                     hmUI.showToast({ text: "今天是三月七的生日,去給她挑個禮物吧。" });
                                     break;
                                 case 2:
-                                    hmUI.showToast({ text: "Today is March 7's birthday, go pick her a present." });
+                                    hmUI.showToast({ text: "Today is March 7th's birthday, go pick her a present." });
                                     break;
                             }
                         } else {
-                            hmUI.showToast({ text: voiceover[randomNum(0, voiceover.length)] });
+                            // let select = parseInt(Math.random() * voiceover.length);
+                            const time = hmSensor.createSensor(hmSensor.id.TIME);
+                            const select = time.utc % voiceover.length;
+                            hmUI.showToast({ text: voiceover[select] });
                         }
                     }
-                    // hmUI.showToast({ text: "test114514" });
                 }
                 // console.log(voiceover);
 
                 //start render
                 switch (mode) {
                     case 0x186a0:
-
-                        hmUI.createWidget(hmUI.widget.IMG, starskybg);
-                        hmUI.createWidget(hmUI.widget.IMG, astralexpress);
-                        hmUI.createWidget(hmUI.widget.IMG, star);
+                        hmUI.createWidget(hmUI.widget.IMG, stelle);
+                        hmUI.createWidget(hmUI.widget.IMG, bg);
 
                         hmUI.createWidget(hmUI.widget.IMG_TIME, time);
                         hmUI.createWidget(hmUI.widget.IMG_DATE, date);
                         hmUI.createWidget(hmUI.widget.IMG_WEEK, week);
-
-                        hmUI.createWidget(hmUI.widget.FILL_RECT, rectFill);
-                        hmUI.createWidget(hmUI.widget.STROKE_RECT, rectStroke);
                         hmUI.createWidget(hmUI.widget.TEXT_IMG, bat);
-
-                        hmUI.createWidget(hmUI.widget.IMG, trailblazecalendar);
-                        hmUI.createWidget(hmUI.widget.IMG, trailblazepower);
-                        hmUI.createWidget(hmUI.widget.IMG, path);
-                        hmUI.createWidget(hmUI.widget.IMG, type);
-                        hmUI.createWidget(hmUI.widget.IMG, heartpulse);
-                        hmUI.createWidget(hmUI.widget.IMG, walk);
-                        hmUI.createWidget(hmUI.widget.IMG, step);
                         hmUI.createWidget(hmUI.widget.TEXT_IMG, heartpulseDigi);
                         hmUI.createWidget(hmUI.widget.TEXT_IMG, walkDigi);
 
